@@ -1,0 +1,59 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Comment {
+  author: User!
+  content: String!
+  createdAt: Date!
+  id: Int!
+  post: Post!
+  postId: Int!
+  userId: Int!
+}
+
+input CreateCommentInput {
+  content: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Mutation {
+  createComment(input: CreateCommentInput!, postId: Int!): Comment!
+  updateComment(id: Int!, input: UpdateCommentInput!): Comment!
+}
+
+type Post {
+  author: User!
+  comments: [Comment!]
+  content: String!
+  createdAt: Date!
+  id: Int!
+  title: String!
+}
+
+type Query {
+  comments: [Comment!]!
+}
+
+enum Role {
+  Admin
+  Manager
+  SuperAdmin
+  User
+}
+
+input UpdateCommentInput {
+  content: String!
+}
+
+type User {
+  comments: [Comment]
+  email: String!
+  id: Int!
+  nickname: String!
+  password: String!
+  posts: [Post]
+  role: Role!
+}
